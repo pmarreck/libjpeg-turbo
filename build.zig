@@ -249,8 +249,8 @@ fn addArmFiles(b: *std.Build, library: *std.Build.Step.Compile, is64: bool) void
         .include_path = "neon-compat.h"
     }, .{});
 
-    library.addConfigHeader(neon_compat);
-    library.addIncludePath(b.path("simd/arm"));
+    library.root_module.addConfigHeader(neon_compat);
+    library.root_module.addIncludePath(b.path("simd/arm"));
 
     const arch_sources = if (is64) blk: {
         var sources = std.array_list.Managed([]const u8).init(std.heap.page_allocator);
@@ -282,7 +282,7 @@ fn addArmFiles(b: *std.Build, library: *std.Build.Step.Compile, is64: bool) void
         "-mfloat-abi=softfp"
     };
 
-    library.addCSourceFiles(.{
+    library.root_module.addCSourceFiles(.{
         .flags = flags,
         .files = arch_sources,
     });
