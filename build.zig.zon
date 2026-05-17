@@ -6,7 +6,7 @@
     .dependencies = .{
         .nasm = .{
             .url = "https://github.com/sno2/nasm/archive/20f90eeca27cab9400bdddcb47ba1dab2a08e6ca.tar.gz",
-            .hash = "nasm-2.16.3-B_NnpXJKAADr2XhvGEEu2vGqKj0sLO1VgSnALuK5MnMY",
+            .hash = "nasm-3.0.1-B_NnpalQAABIJ09qP-5SCC6i2MgZI93mAZwdFAyfLhnt",
         },
     },
     .paths = .{
