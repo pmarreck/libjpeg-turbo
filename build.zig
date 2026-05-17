@@ -12,9 +12,9 @@ pub fn build(b: *std.Build) void {
         })
     });
     
-    lib.linkLibC();
+    lib.root_module.link_libc = true;
     
-    lib.addIncludePath(b.path("src"));
+    lib.root_module.addIncludePath(b.path("src"));
     lib.installHeadersDirectory(b.path("src"), "", .{});
     
     const jversion_h = b.addConfigHeader(.{
@@ -28,7 +28,7 @@ pub fn build(b: *std.Build) void {
         .WITH_SIMD = 1,
     });
     
-    lib.addConfigHeader(jversion_h);
+    lib.root_module.addConfigHeader(jversion_h);
     lib.installConfigHeader(jversion_h);
     
     const libjpeg_map = b.addConfigHeader(.{
@@ -42,7 +42,7 @@ pub fn build(b: *std.Build) void {
         .WITH_SIMD = 1,
     });
     
-    lib.addConfigHeader(libjpeg_map);
+    lib.root_module.addConfigHeader(libjpeg_map);
     lib.installConfigHeader(libjpeg_map);
     
     const jconfig_h = b.addConfigHeader(.{
@@ -57,7 +57,7 @@ pub fn build(b: *std.Build) void {
         .WITH_SIMD = 1,
     });
     
-    lib.addConfigHeader(jconfig_h);
+    lib.root_module.addConfigHeader(jconfig_h);
     lib.installConfigHeader(jconfig_h);
     
     const jconfigint = b.addConfigHeader(.{
@@ -88,7 +88,7 @@ pub fn build(b: *std.Build) void {
         },
     });
     
-    lib.addConfigHeader(jconfigint);
+    lib.root_module.addConfigHeader(jconfigint);
     lib.installConfigHeader(jconfigint);
     
     switch (target.result.cpu.arch) {
@@ -111,7 +111,7 @@ pub fn build(b: *std.Build) void {
         else => {},
     }
     
-    lib.addCSourceFiles(.{
+    lib.root_module.addCSourceFiles(.{
         .files = &.{
             "src/jcapimin.c",
             "src/wrapper/jcapistd-8.c",
@@ -427,7 +427,7 @@ fn addX86Files(b: *std.Build, lib: *std.Build.Step.Compile, target: std.Build.Re
         nasm_run.addFileArg(b.path(input_file));
     }
 
-    lib.addCSourceFiles(.{
+    lib.root_module.addCSourceFiles(.{
         .files = &.{"simd/jsimd.c"}
     });
 }

@@ -1,12 +1,12 @@
 .{
     .name = .libjpeg_turbo,
     .version = "3.1.1-1",
-    .minimum_zig_version = "0.14.1",
+    .minimum_zig_version = "0.16.0",
     .fingerprint = 0xb6dab2ceb216268a,
     .dependencies = .{
         .nasm = .{
-            .url = "https://github.com/sno2/nasm/archive/d7807d1b9036adb5a279373f383875e22da9c0cc.tar.gz",
-            .hash = "nasm-2.16.3-B_NnpXJKAADr2XhvGEEu2vGqKj0sLO1VgSnALuK5MnMY",
+            .url = "https://github.com/sno2/nasm/archive/20f90eeca27cab9400bdddcb47ba1dab2a08e6ca.tar.gz",
+            .hash = "",
         },
     },
     .paths = .{
