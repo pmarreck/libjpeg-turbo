@@ -422,7 +422,7 @@ fn addX86Files(b: *std.Build, lib: *std.Build.Step.Compile, target: std.Build.Re
         //nasm_run.addDecoratedDirectoryArg("-I", b.path(std.fs.path.dirname(input_file).?), "/");
 
         nasm_run.addArgs(&.{"-o"});
-        lib.addObjectFile(nasm_run.addOutputFileArg(output_basename));
+        lib.root_module.addObjectFile(nasm_run.addOutputFileArg(output_basename));
 
         nasm_run.addFileArg(b.path(input_file));
     }
